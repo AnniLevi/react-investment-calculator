@@ -1,19 +1,18 @@
 import { useState } from "react";
 
-
-
-function UserInput() {
+function UserInput({ onCalculate }) {
   const initialInvestmentData = {
-    "current-savings": 1000,
+    "current-savings": 10000,
     "yearly-contribution": 1200,
     "expected-return": 7,
     duration: 10,
-  }
+  };
 
   const [investmentData, setInvestmentData] = useState(initialInvestmentData);
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
+    onCalculate(investmentData);
   };
 
   const formResetHandler = () => {
@@ -38,7 +37,7 @@ function UserInput() {
             onChange={(event) =>
               inputChangeHandler("current-savings", event.target.value)
             }
-            value={investmentData['current-savings']}
+            value={investmentData["current-savings"]}
             type="number"
             id="current-savings"
           />
@@ -49,7 +48,7 @@ function UserInput() {
             onChange={(event) =>
               inputChangeHandler("yearly-contribution", event.target.value)
             }
-            value={investmentData['yearly-contribution']}
+            value={investmentData["yearly-contribution"]}
             type="number"
             id="yearly-contribution"
           />
@@ -64,7 +63,7 @@ function UserInput() {
             onChange={(event) =>
               inputChangeHandler("expected-return", event.target.value)
             }
-            value={investmentData['expected-return']}
+            value={investmentData["expected-return"]}
             type="number"
             id="expected-return"
           />
@@ -75,7 +74,7 @@ function UserInput() {
             onChange={(event) =>
               inputChangeHandler("duration", event.target.value)
             }
-            value={investmentData['duration']}
+            value={investmentData["duration"]}
             type="number"
             id="duration"
           />
